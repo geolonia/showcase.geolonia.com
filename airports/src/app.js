@@ -121,15 +121,13 @@ fetch(AIR_PORTS).then(res => {
     new GeoJsonLayer({
       id: 'airports',
       data: data,
-      // Styles
       filled: true,
       pointRadiusMinPixels: 2,
       pointRadiusScale: 2000,
       getRadius: () => 5,
       getFillColor: [200, 0, 80, 180],
-      // Interactive props
-      pickable: true,
-      autoHighlight: true,
+      pickable: false,
+      autoHighlight: false,
     }),
   ]
 

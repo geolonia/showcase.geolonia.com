@@ -5,7 +5,8 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --config ./webpack.dev.js",
     "build": "webpack -p --config ./webpack.config.js",
-    "test": "eslint \"src/**/*.js\" --fix"
+    "test": "eslint \"src/**/*.js\" --fix",
+    "screenshot": "node bin/screenshot.js"
   },
   "dependencies": {
     "@deck.gl/core": "^8.1.0",
@@ -28,6 +29,7 @@
     "node-sass": "^4.13.1",
     "prettier-eslint": "^9.0.1",
     "prettier-eslint-cli": "^5.0.0",
+    "puppeteer": "^3.3.0",
     "sass-loader": "^8.0.2",
     "style-loader": "^0.23.1",
     "svg-inline-loader": "^0.8.2",
