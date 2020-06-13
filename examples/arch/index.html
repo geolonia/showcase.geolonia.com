@@ -14,12 +14,17 @@
     <meta name="twitter:image:src" content="https://showcase.geolonia.com/airports/screenshot.png" />
 
     <title>DECK.GL Arch Example</title>
+
+    <style>
+      #showcase-container {
+        width: 1200px;
+        height: 630px;
+        margin: 0 auto;
+      }
+    </style>
   </head>
   <body>
-    <div id="container">
-      <div id="map" data-navigation-control="off"></div>
-      <canvas id="deck-canvas"></canvas>
-    </div>
+    <div id="showcase-container"></div>
 
     <script type="text/javascript" src="https://api.geolonia.com/v1/embed?geolonia-api-key=YOUR-API-KEY"></script>
     <script src='./dist/app.js'></script>

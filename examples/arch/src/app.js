@@ -3,9 +3,9 @@ import { GeoJsonLayer, ArcLayer } from '@deck.gl/layers'
 
 import './app.scss'
 
-const AIR_PORTS = './airports.geojson'
+const air_ports = './airports.geojson'
 
-const INITIAL_VIEW_STATE = {
+const config = {
   latitude: 37.092,
   longitude: 138.219,
   zoom: 6,
@@ -13,6 +13,7 @@ const INITIAL_VIEW_STATE = {
   pitch: 60,
 }
 
+// Mapbox GL JS 用のスタイルを定義
 const backgroundColor = '#111111'
 const waterColor = '#000000'
 const borderColor = '#555555'
@@ -104,17 +105,32 @@ const style = {
   ],
 }
 
+// 地図用のコンテナーを初期化
+const mainContainer = document.getElementById('showcase-container')
+mainContainer.style.position = 'relative'
+const mapContainer = document.createElement('div')
+mapContainer.dataset.navigationControl = 'off'
+mainContainer.appendChild(mapContainer)
+
+// Deck.GL 用のコンテナーを初期化
+const deckContainer = document.createElement('div')
+const deckCanvas = document.createElement('canvas')
+deckContainer.appendChild(deckCanvas)
+mainContainer.appendChild(deckContainer)
+
+// 地図を設置
 const map = new window.geolonia.Map({
-  container: '#map',
+  container: mapContainer,
   style: style,
   interactive: true,
-  center: [INITIAL_VIEW_STATE.longitude, INITIAL_VIEW_STATE.latitude],
-  zoom: INITIAL_VIEW_STATE.zoom,
-  bearing: INITIAL_VIEW_STATE.bearing,
-  pitch: INITIAL_VIEW_STATE.pitch,
+  center: [config.longitude, config.latitude],
+  zoom: config.zoom,
+  bearing: config.bearing,
+  pitch: config.pitch,
 })
 
-fetch(AIR_PORTS).then(res => {
+// 空港の GeoJSON を取得して Deck.GL のレイヤーを設置
+fetch(air_ports).then(res => {
   return res.json()
 }).then(data => {
   const layers = [
@@ -138,7 +154,7 @@ fetch(AIR_PORTS).then(res => {
     }
     const arc = new ArcLayer({
       id: `arcs-${i}`,
-      data: AIR_PORTS,
+      data: air_ports,
       dataTransform: d => {
         return d.features
       },
@@ -153,10 +169,10 @@ fetch(AIR_PORTS).then(res => {
   }
 
   new Deck({
-    canvas: 'deck-canvas',
+    canvas: deckCanvas,
     width: '100%',
     height: '100%',
-    initialViewState: INITIAL_VIEW_STATE,
+    initialViewState: config,
     controller: true,
     onViewStateChange: ({ viewState }) => {
       map.jumpTo({
