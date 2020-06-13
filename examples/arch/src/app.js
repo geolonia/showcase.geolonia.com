@@ -53,25 +53,6 @@ const style = {
       },
     },
     {
-      id: 'water-outline',
-      type: 'line',
-      source: 'geolonia',
-      'source-layer': 'water',
-      filter: [
-        '==',
-        '$type',
-        'Polygon',
-      ],
-      layout: {
-        visibility: 'visible',
-      },
-      paint: {
-        'line-color': borderColor,
-        'line-width': 1,
-        'line-blur': 0.4,
-      },
-    },
-    {
       id: 'boundary-state',
       type: 'line',
       source: 'geolonia',
