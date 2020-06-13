@@ -88,7 +88,6 @@ const style = {
 
 // 地図用のコンテナーを初期化
 const mainContainer = document.getElementById('showcase-container')
-mainContainer.style.position = 'relative'
 const mapContainer = document.createElement('div')
 mapContainer.dataset.navigationControl = 'off'
 mainContainer.appendChild(mapContainer)
