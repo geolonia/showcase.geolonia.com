@@ -14,9 +14,9 @@ const config = {
 }
 
 // Mapbox GL JS 用のスタイルを定義
-const backgroundColor = '#111111'
-const waterColor = '#000000'
-const borderColor = '#555555'
+const backgroundColor = '#07111D'
+const waterColor = '#122330'
+const borderColor = '#122330'
 
 const style = {
   version: 8,
@@ -50,7 +50,6 @@ const style = {
       paint: {
         'fill-color': waterColor,
         'fill-antialias': true,
-        'fill-outline-color': borderColor
       },
     },
     {
