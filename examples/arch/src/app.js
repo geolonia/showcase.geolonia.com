@@ -122,8 +122,8 @@ fetch(air_ports).then(res => {
       pointRadiusScale: 2000,
       getRadius: () => 5,
       getFillColor: [200, 0, 80, 180],
-      pickable: false,
-      autoHighlight: false,
+      pickable: true,
+      autoHighlight: true,
     }),
   ]
 
@@ -135,6 +135,8 @@ fetch(air_ports).then(res => {
     const arc = new ArcLayer({
       id: `arcs-${i}`,
       data: air_ports,
+      greatCircle: true,
+      wrapLongitude: true,
       dataTransform: d => {
         return d.features
       },
