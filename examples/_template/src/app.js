@@ -18,9 +18,9 @@ const borderColor = '#555555'
 const style = {
   version: 8,
   sources: {
-    geolonia: {
+    'natural-earth': {
       type: 'vector',
-      url: 'https://geolonia.github.io/tiny-tileserver/tiles.json',
+      url: 'https://cdn.geolonia.com/tiles/tiles.json',
     },
   },
   layers: [
@@ -34,7 +34,7 @@ const style = {
     {
       id: 'water',
       type: 'fill',
-      source: 'geolonia',
+      source: 'natural-earth',
       'source-layer': 'water',
       filter: [
         '==',
@@ -47,51 +47,18 @@ const style = {
       paint: {
         'fill-color': waterColor,
         'fill-antialias': true,
+        'fill-outline-color': borderColor
       },
     },
     {
-      id: 'water-outline',
+      id: 'boundary',
       type: 'line',
-      source: 'geolonia',
-      'source-layer': 'water',
-      filter: [
-        '==',
-        '$type',
-        'Polygon',
-      ],
-      layout: {
-        visibility: 'visible',
-      },
-      paint: {
-        'line-color': borderColor,
-        'line-width': 1,
-        'line-blur': 0.4,
-      },
-    },
-    {
-      id: 'boundary-state',
-      type: 'line',
-      source: 'geolonia',
-      'source-layer': 'boundary',
+      source: 'natural-earth',
+      'source-layer': 'admin',
       layout: {
         'line-cap': 'round',
         'line-join': 'round',
         visibility: 'visible',
-      },
-      paint: {
-        'line-color': borderColor,
-        'line-width': 1,
-        'line-blur': 0.4,
-      },
-    },
-    {
-      id: 'boundary-country',
-      type: 'line',
-      source: 'geolonia',
-      'source-layer': 'boundary',
-      layout: {
-        'line-cap': 'round',
-        'line-join': 'round',
       },
       paint: {
         'line-color': borderColor,
