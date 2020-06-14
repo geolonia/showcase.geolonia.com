@@ -23,7 +23,7 @@ const style = {
   sources: {
     'natural-earth': {
       type: 'vector',
-      url: 'https://cdn.geolonia.com/tiles/tiles.json',
+      url: 'https://cdn.geolonia.com/tiles/natural-earth.json',
     },
   },
   layers: [
